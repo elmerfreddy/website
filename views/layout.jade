@@ -2,6 +2,22 @@ doctype 5
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    != css('application.css')
   body
-    block content
+    .container
+      .header
+        ul.nav.nav-pills.pull-right
+          li.active
+            a(href="#") Home
+          li
+            a(href="#") About
+          li
+            a(href="#") Contact
+        h3.text-muted HanaDevel
+
+      block content
+
+      .footer
+        p &copy; HanaDevel 2014
+
+    != js('application.js')
