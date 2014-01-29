@@ -4,20 +4,22 @@ html
     title= title
     != css('application.css')
   body
+    mixin menu(url, label)
+      - path = path === undefined ? '/' : path
+      li(class=(path === url ? 'active' : ''))
+        a(href=url)= label
+
     .container
       .header
         ul.nav.nav-pills.pull-right
-          li.active
-            a(href="#") Home
-          li
-            a(href="#") About
-          li
-            a(href="#") Contact
+          +menu('/', 'Home')
+          +menu('/about', 'About')
+          +menu('/contact', 'Contact')
         h3.text-muted HanaDevel
 
       block content
 
       .footer
-        p &copy; HanaDevel 2014
+        p &copy; HanaDevel #{new Date().getFullYear()}
 
     != js('application.js')
