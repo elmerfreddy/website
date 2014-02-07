@@ -18,7 +18,9 @@ app.set "view engine", "jade"
 # HTML should be prettified
 app.locals.pretty = true
 
-app.use require("connect-assets")(buildDir: "public")
+# https://github.com/adunkman/connect-assets/issues/221
+app.use require("connect-assets")(buildDir: "public", helperContext: app.locals)
+
 app.use express.favicon()
 app.use express.logger("dev")
 app.use express.json()
